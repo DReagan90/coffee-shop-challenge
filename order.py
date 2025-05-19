@@ -1,3 +1,6 @@
+from customer import Customer
+from coffee import Coffee
+
 class Order:
     def __init__(self, customer, coffee, price):
         if not isinstance(customer, Customer):
@@ -24,4 +27,4 @@ class Order:
 
     @property
     def price(self):
-        return self._price
+        return self._price  # Immutable

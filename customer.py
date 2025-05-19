@@ -37,7 +37,8 @@ class Customer:
         return list({order.coffee for order in self._orders})
 
     def create_order(self, coffee, price):
-        from order import Order  # import here to avoid circular imports
+        from order import Order  # Import Order inside method to avoid circular import
+        from coffee import Coffee  # ✅ You need to add this line
 
         if not isinstance(coffee, Coffee):
             raise TypeError("coffee must be a Coffee instance")
@@ -45,8 +46,8 @@ class Customer:
             raise ValueError("price must be a float between 1.0 and 10.0")
 
         order = Order(self, coffee, price)
-        # Linking happens inside Order.__init__
         return order
+
 
     def __repr__(self):
         return f"Customer('{self.name}')"

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>Coffee Shop</title>
+</head>
+<body>
+  <h1>Coffee Shop Orders</h1>
+
+  <h2>Customers and Their Orders</h2>
+  {% for customer in customers %}
+    <h3>{{ customer.name }}</h3>
+    <ul>
+      {% for order in customer.orders() %}
+        <li>{{ order.coffee.name }} - ${{ order.price }}</li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+
+  <h2>Coffees</h2>
+  {% for coffee in coffees %}
+    <h3>{{ coffee.name }}</h3>
+    <p>Number of orders: {{ coffee.num_orders() }}</p>
+    <p>Average price: ${{ "%.2f"|format(coffee.average_price()) }}</p>
+  {% endfor %}
+</body>
+</html>

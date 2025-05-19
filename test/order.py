@@ -1,3 +1,6 @@
+from customer import Customer
+from coffee import Coffee
+
 class Order:
   def __init__(self, customer, coffee, price):
     if not isinstance(customer, Customer):

@@ -17,6 +17,15 @@ class Customer:
             raise ValueError("Name must be between 1 and 15 characters.")
         self._name = value
 
+    
+    @classmethod
+    def most_aficionado(cls, coffee):
+        all_customers = coffee.customers()
+        if not all_customers:
+            return None
+        return max(all_customers, key=lambda c: sum(o.price for o in c.orders() if o.coffee == coffee), default=None)
+
+
     def add_order(self, order):
         """Add an Order instance to this customer."""
         self._orders.append(order)
@@ -31,3 +40,5 @@ class Customer:
 
     def __repr__(self):
         return f"Customer('{self.name}')"
+    
+    

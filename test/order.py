@@ -1,18 +1,18 @@
- class Order:
-    def __init__(self, customer, coffee, price):
-        if not isinstance(customer, Customer):
+class Order:
+  def __init__(self, customer, coffee, price):
+    if not isinstance(customer, Customer):
             raise TypeError("customer must be a Customer instance.")
-        if not isinstance(coffee, Coffee):
+    if not isinstance(coffee, Coffee):
             raise TypeError("coffee must be a Coffee instance.")
-        if not (isinstance(price, float) and 1.0 <= price <= 10.0):
+    if not (isinstance(price, float) and 1.0 <= price <= 10.0):
             raise ValueError("Price must be a float between 1.0 and 10.0.")
 
-        self._customer = customer
-        self._coffee = coffee
-        self._price = price
+    self._customer = customer
+    self._coffee = coffee
+    self._price = price
 
-        customer._orders.append(self)
-        coffee._orders.append(self)
+    customer._orders.append(self)
+    coffee._orders.append(self)
 
     @property
     def customer(self):
